@@ -1,2 +1,2 @@
-# L-p-tr-nh-Mobile
+# Lập trình Mobile
 1 quả app về bất động sản (chắc vậy)
