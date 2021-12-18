@@ -19,21 +19,23 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_above="@+id/centernine"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="155dp"
         android:orientation="vertical">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EZ Note"
+            android:text="Xin Chào"
+            android:textAlignment="center"
             android:textSize="40dp"
             android:textColor="@color/black"
             android:textStyle="bold"></TextView>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Dang nhap de tiep tuc"
+            android:text="Đăng nhập dể tiếp tục"
+            android:textAlignment="center"
             android:textSize="20dp"
             android:textColor="@color/teal_700"></TextView>
 
@@ -95,19 +97,20 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-    
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="Quên mật khẩu?"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="@color/black"
         android:layout_below="@+id/dangnhap"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:textAlignment="center"></TextView>
+        android:layout_marginRight="20dp"
+        android:text="Quên mật khẩu?"
+        android:textAlignment="center"
+        android:textColor="@color/black"></TextView>
     <RelativeLayout
         android:id="@+id/gotosignup"
         android:layout_width="match_parent"
