@@ -71,24 +71,63 @@
             android:hint="Enter your password"
             android:inputType="textEmailAddress"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="30dp"
+    <RelativeLayout
+        android:id="@+id/dangnhap"
+        android:layout_width="match_parent"
+
+        android:layout_height="40dp"
         android:layout_below="@+id/password"
-        android:id="@+id/login">
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_design">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
             android:text="Dang nhap"
-            android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+    
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="Quên mật khẩu?"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/dangnhap"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"></TextView>
+    <RelativeLayout
+        android:id="@+id/gotosignup"
+        android:layout_width="match_parent"
+
+        android:layout_height="40dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/button_design">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="8dp"
+            android:text="New user"
+            android:textColor="@color/white"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
