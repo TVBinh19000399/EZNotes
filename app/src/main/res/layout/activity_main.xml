@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#302F2F"
+    android:background="#FFF6AA"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/EZNotes"
         android:fontFamily="@font/bold"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:layout_marginTop="26dp"
         android:layout_marginStart="10dp"
@@ -29,7 +29,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/background_search"
+        android:background="#F1E683"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="10dp"
@@ -78,7 +78,7 @@
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#424040"
+        android:background="#F1E683"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="15dp"
@@ -86,25 +86,25 @@
 
         <ImageView
             android:id="@+id/imageSync"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerHorizontal="true"
+            android:background="#F1E683"
             android:contentDescription="@string/app_name"
             android:scaleType="fitCenter"
-            android:background="#424040"
             android:src="@drawable/ic_baseline_sync_24"
-            app:tint="@color/white" />
+            app:tint="@color/black" />
 
         <ImageView
             android:id="@+id/imageSettings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
+            android:background="#F1E683"
             android:contentDescription="@string/app_name"
             android:foregroundGravity="right"
-            android:background="#424040"
             android:src="@drawable/ic_baseline_settings_24"
-            app:tint="@color/white" />
+            app:tint="@color/black" />
 
 
     </RelativeLayout>

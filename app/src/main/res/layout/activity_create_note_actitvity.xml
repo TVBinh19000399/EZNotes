@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#302F2F"
+    android:background="#FFF6AA"
     tools:context=".CreateNoteActivity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
         android:clipToPadding="false"
         android:paddingBottom="10dp">
 
@@ -31,12 +31,12 @@
                 android:src="@drawable/ic_back"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white" />
+                app:tint="@color/black" />
 
             <ImageView
                 android:id="@+id/imageSave"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginEnd="12dp"
                 android:background="@drawable/background_done_button"
                 android:contentDescription="@string/app_name"
@@ -45,26 +45,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/imageBack"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/imageBack"
-                app:tint="@color/white" />
-
-            <EditText
-                android:id="@+id/inputNoteTitle"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="12dp"
-                android:background="@null"
-                android:fontFamily="@font/bold"
-                android:hint="@string/note_title"
-                android:imeOptions="actionDone"
-                android:importantForAutofill="no"
-                android:includeFontPadding="false"
-                android:inputType="text"
-                android:textColor="@color/white"
-                android:textColorHint="#AEACAC"
-                android:textSize="35sp"
-                app:layout_constraintTop_toBottomOf="@id/imageBack" />
+                app:tint="@color/black" />
 
             <TextView
                 android:id="@+id/textDateTime"
@@ -72,11 +53,11 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:includeFontPadding="false"
-                android:textColor="#AEACAC"
+                android:textColor="@color/black"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/inputNoteTitle"
-                app:layout_constraintStart_toStartOf="@id/inputNoteTitle"
-                app:layout_constraintTop_toBottomOf="@id/inputNoteTitle" />
+                android:text="Date dislay"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBack" />
 
             <EditText
                 android:id="@+id/inputNoteSubtitle"
@@ -87,15 +68,15 @@
                 android:layout_marginEnd="12dp"
                 android:background="@null"
                 android:fontFamily="@font/medium"
-                android:hint="@string/note_subtitles"
+                android:hint="@string/title"
                 android:importantForAutofill="no"
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-                android:textColor="#9E9A9A"
+                android:textColor="@color/black"
                 android:textColorHint="#676565"
-                android:textSize="13sp"
+                android:textSize="35sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/viewSubtitleIndicator"
                 app:layout_constraintTop_toBottomOf="@id/textDateTime" />
@@ -126,7 +107,7 @@
                 android:includeFontPadding="false"
                 android:inputType="textMultiLine"
                 android:minHeight="100dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textColorHint="#676565"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -143,7 +124,7 @@
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#424040"
+        android:background="#F1E683"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="15dp"
@@ -151,32 +132,35 @@
 
         <ImageView
             android:id="@+id/imageAlarm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:background="#F1E683"
             android:contentDescription="@string/app_name"
-            android:background="#424040"
-            android:layout_toLeftOf="@id/imageShare"
             android:src="@drawable/ic_baseline_access_alarm_24"
-            app:tint="@color/white" />
+
+            app:tint="@color/black" />
+
 
         <ImageView
             android:id="@+id/imageShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:layout_toRightOf="@id/imageAlarm"
+            android:background="#F1E683"
             android:contentDescription="@string/app_name"
-            android:background="#424040"
             android:src="@drawable/ic_baseline_mobile_screen_share_24"
-            app:tint="@color/white" />
+            app:tint="@color/black" />
 
         <ImageView
             android:id="@+id/imageDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/app_name"
-            android:background="#424040"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
+            android:background="#F1E683"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_baseline_delete_24"
-            app:tint="@color/white" />
+            app:tint="@color/black" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
