@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "489749289230",
+    "project_id": "ez-note-ba48e",
+    "storage_bucket": "ez-note-ba48e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489749289230:android:967b3cc0eb935780fd1f5f",
+        "android_client_info": {
+          "package_name": "com.mobile.eznote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489749289230-uihho6m394vsejh2l1f61qotdb0tutrm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmtnGQY5NFoRF6ZDwEMzHbYu-2z0k1Cqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489749289230-uihho6m394vsejh2l1f61qotdb0tutrm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

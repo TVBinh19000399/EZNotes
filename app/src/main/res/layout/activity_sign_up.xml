@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#FFF6AA"
     tools:context=".SignUpActivity">
 
     <RelativeLayout
@@ -22,23 +22,24 @@
         android:layout_marginBottom="155dp"
         android:orientation="vertical">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thêm người dùng mới"
+            android:text="EZ Note"
             android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="35dp"
+            android:textColor="#C6205B"
+            android:textSize="50dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Rất vui gặp lại bạn"
+            android:text="Tạo tài khoản mới"
             android:textAlignment="center"
-            android:textColor="@color/teal_700"
-            android:textSize="20dp"></TextView>
+            android:textColor="@color/black"
+            android:textSize="35dp"
+            android:textStyle="bold"></TextView>
+
     </LinearLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +56,7 @@
             android:id="@+id/signupemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your Email"
+            android:hint="Nhập Email"
             android:inputType="textEmailAddress"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +75,7 @@
             android:id="@+id/signuppassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your password"></EditText>
+            android:hint="Nhập Password"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
@@ -110,7 +111,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="30dp"
-        android:text="Bạn muốn đăng nhập ?"
+        android:text="Quay lại đăng nhập"
         android:textAlignment="center"
         android:textColor="#393838"></TextView>
 

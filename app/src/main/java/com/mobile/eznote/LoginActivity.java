@@ -1,5 +1,6 @@
 package com.mobile.eznote;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,16 +11,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText mloginemail, mloginpassword;
     private RelativeLayout mlogin, mgotosignup;
     private TextView mgotoforgotpassword;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        mAuth = FirebaseAuth.getInstance();
         getSupportActionBar().hide();
         mloginemail = findViewById(R.id.Loginemail);
         mloginpassword = findViewById(R.id.Loginpassword);
@@ -42,11 +49,21 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String mail = mloginemail.getText().toString().trim();
-                String passord = mloginpassword.getText().toString().trim();
-                if (mail.isEmpty() || passord.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Bạn phải điền tát cả !", Toast.LENGTH_SHORT).show();
+                String password = mloginpassword.getText().toString().trim();
+                if (mail.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Bạn phải điền tất cả!", Toast.LENGTH_SHORT).show();
                 } else {
-                    //login the user
+                    mAuth.signInWithEmailAndPassword(mail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
+                            } else {
+                                String error = task.getException().getMessage();
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: "+error, Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    });
                 }
             }
         });
