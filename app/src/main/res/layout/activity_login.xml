@@ -31,19 +31,12 @@
             android:textSize="50dp"
             android:textStyle="bold"></TextView>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Xin chào"
-            android:textAlignment="center"
-            android:textColor="#9F1C1C"
-            android:textSize="30dp"
-            android:textStyle="normal"></TextView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Đăng nhập dể tiếp tục"
+            android:layout_marginTop="30dp"
+            android:text="Vui lòng đăng nhập để tiếp tục!"
             android:textAlignment="center"
             android:textColor="@color/teal_700"
             android:textSize="20dp"></TextView>
@@ -64,14 +57,13 @@
             android:id="@+id/Loginemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your Email"
+            android:hint="Nhập Email"
             android:inputType="textEmailAddress"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/password"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         android:layout_below="@+id/centernine"
         android:layout_marginLeft="30dp"
@@ -83,7 +75,7 @@
             android:id="@+id/Loginpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your password"></EditText>
+            android:hint="Nhập Password"></EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <RelativeLayout
@@ -141,7 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
-            android:text="Tạo người dùng mới"
+            android:text="Tạo tài khoản mới"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
