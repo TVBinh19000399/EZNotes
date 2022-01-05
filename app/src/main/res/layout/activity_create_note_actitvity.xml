@@ -54,12 +54,10 @@
                 android:fontFamily="@font/regular"
                 android:includeFontPadding="false"
                 android:text="Date dislay"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="8dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageSave" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageBack" />
 
             <EditText
                 android:id="@+id/inputNoteSubtitle"

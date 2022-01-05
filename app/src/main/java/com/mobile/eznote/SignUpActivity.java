@@ -39,8 +39,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String password =  msignuppassword.getText().toString().trim();
                 if(mail.isEmpty() || password.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Tất cả đều bắt buộc :",Toast.LENGTH_SHORT).show();
-                } else if (mail.length()<7|| password.length()<7){
-                    Toast.makeText(getApplicationContext(),"Tài khoản, mật khẩu phải lớn hơn 6 kí tự!",Toast.LENGTH_SHORT).show();
+
                 }
                 else if(password.length()<7) {
                     Toast.makeText(getApplicationContext(),"Mật khẩu nên lớn hơn 7 nhé",Toast.LENGTH_SHORT).show();
