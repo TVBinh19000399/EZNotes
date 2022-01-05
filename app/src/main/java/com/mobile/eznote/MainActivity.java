@@ -1,4 +1,4 @@
-package com.nhd.example.eznote;
+package com.mobile.eznote;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,18 +16,27 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivityForResult(
-                        new Intent(getApplicationContext(), CreateNoteActivity.class),
+                        new Intent(MainActivity.this, CreateNoteActivity.class),
                         REQUEST_CODE_ADD_NOTE
                 );
             }
         });
 
     }
+
+    public void gotosignup(View view) {
+        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
+        startActivity(intent);
+    }
+
+    public void gotocreatenote(View view) {
+        Intent intent = new Intent(MainActivity.this, CreateNoteActivity.class);
+        startActivity(intent);
+    }
+
 }

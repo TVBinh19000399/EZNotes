@@ -1,14 +1,12 @@
-package com.nhd.example.eznote;
+package com.mobile.eznote;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-public class CreateNoteActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+public class CreateNoteActivity extends AppCompatActivity {
 
 
     @Override

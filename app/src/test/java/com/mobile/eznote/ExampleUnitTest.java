@@ -1,4 +1,4 @@
-package com.nhd.example.eznote;
+package com.mobile.eznote;
 
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nhd.example.eznote">
+    package="com.mobile.eznote">
 
     <application
         android:allowBackup="true"
@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EZNote">
         <activity
+            android:name=".ForgetPasswodActivity"
+            android:exported="true" />
+        <activity
             android:name=".CreateNoteActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="stateHidden"
-            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

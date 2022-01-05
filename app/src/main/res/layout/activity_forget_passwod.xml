@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ForgetPasswodActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/centernine3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_centerInParent="true"></RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centernine3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quên mật khẩu"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="35dp"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đừng lo lắng!"
+            android:textAlignment="center"
+            android:textColor="@color/teal_700"
+            android:textSize="20dp"></TextView>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/quenmatkhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/centernine3"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        android:hint="Nhập email bạn đã đăng ký đi nè :">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/phuchoi_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quenmatkhau"
+        android:layout_marginLeft="30dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:background="@color/black"
+        android:text="Nhấn để phục hồi"></Button>
+
+    <TextView
+        android:id="@+id/goto_screen_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:text="Quay lại màn hình đăng nhập nào!"
+        android:textAlignment="center"
+        android:textColor="@color/teal_700"
+        android:textSize="24dp"
+        android:textStyle="bold"
+
+        ></TextView>
+
+</RelativeLayout>
+
+

@@ -1,4 +1,4 @@
-package com.nhd.example.eznote;
+package com.mobile.eznote;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.nhd.example.eznote", appContext.getPackageName());
+        assertEquals("com.mobile.eznote", appContext.getPackageName());
     }
 }

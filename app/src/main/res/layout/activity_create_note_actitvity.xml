@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFF6AA"
+    android:orientation="vertical"
     tools:context=".CreateNoteActivity">
 
     <ScrollView
@@ -53,9 +53,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/regular"
                 android:includeFontPadding="false"
+                android:text="Date dislay"
                 android:textColor="@color/black"
                 android:textSize="12sp"
-                android:text="Date dislay"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageBack" />
 
