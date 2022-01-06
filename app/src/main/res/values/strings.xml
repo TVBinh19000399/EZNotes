@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EZ Note</string>
+    <string name="app_name">EZ Notes</string>
     <string name="my_notes">My notes</string>
     <string name="search_notes">search notes</string>
     <string name="EZNotes">EZNotes</string>
@@ -7,4 +7,14 @@
     <string name="note_title">Note Title</string>
     <string name="type_note_here">Type note here..</string>
     <string name="title">Title</string>
+    <string name="setting">Setting</string>
+    <string name="miscellaneous">Miscellaneous</string>
+    <string name="choose_color">Choose color</string>
+    <string name="add_image">Add Image</string>
+    <string name="add_url">Add Url</string>
+    <string name="enter_url">Enter URL</string>
+    <string name="add">ADD</string>
+    <string name="cancel_dialog">CANCEL</string>
+    <string name="delete_note">Delete note</string>
+    <string name="are_you_sure_you_want_to_delete_this_note">You sure you wanna delete this note?</string>
 </resources>

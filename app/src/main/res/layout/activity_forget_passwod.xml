@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF6AA"
-    tools:context=".ForgetPasswodActivity">
+    android:background="#FFEE58"
+    tools:context=".activities.ForgetPasswodActivity">
 
 
     <RelativeLayout
@@ -27,9 +27,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EZ Note"
+            android:text="EZNotes"
+            android:fontFamily="@font/vagrb"
             android:textAlignment="center"
-            android:textColor="#C6205B"
+            android:textColor="#2562FA"
             android:textSize="50dp"
             android:textStyle="bold"></TextView>
 
@@ -82,4 +83,5 @@
         android:textColor="#393838"></TextView>
 
 </RelativeLayout>
+
 

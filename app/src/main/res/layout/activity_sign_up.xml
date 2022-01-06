@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF6AA"
-    tools:context=".SignUpActivity">
+    android:background="#FFEE58"
+    tools:context=".activities.SignUpActivity">
 
     <RelativeLayout
         android:id="@+id/centernine2"
@@ -25,9 +25,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="EZ Note"
+            android:fontFamily="@font/vagrb"
+            android:text="EZNotes"
             android:textAlignment="center"
-            android:textColor="#C6205B"
+            android:textColor="#2562FA"
             android:textSize="50dp"
             android:textStyle="bold"></TextView>
 
@@ -117,4 +118,8 @@
 
 
 </RelativeLayout>
+
+
+
+
 

@@ -3,21 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#FFF6AA"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#FFF6AA"
+    tools:context=".activities.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/textMyNotes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/EZNotes"
-        android:textColor="#C6205B"
-        android:fontFamily="@font/bold"
-        android:textSize="40sp"
-        android:layout_marginTop="26dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="10dp"
+        android:fontFamily="@font/vagrb"
+        android:text="@string/EZNotes"
+        android:textColor="#000000"
+        android:textSize="40sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +35,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="8dp"
-        android:background="#F1E683"
+        android:background="#C8C0A9"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingStart="10dp"
@@ -55,9 +61,9 @@
             android:importantForAutofill="no"
             android:includeFontPadding="false"
             android:inputType="text"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="#A8A2A2"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
     </LinearLayout>
 
@@ -65,34 +71,63 @@
         android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginEnd="2dp"
         android:clipToPadding="false"
         android:paddingStart="0dp"
         android:paddingEnd="12dp"
         android:paddingBottom="12dp"
         app:layout_constraintBottom_toTopOf="@id/layoutQuickActions"
-        app:layout_constraintTop_toBottomOf="@id/layoutSearch"/>
+        app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/layoutQuickActions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#F1E683"
+        android:background="#FDD835"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
+
+        <ImageView
+            android:id="@+id/imageAddNote"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#FDD835"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_add_outline"
+            app:tint="@color/black" />
+
+        <ImageView
+            android:id="@+id/imageAddImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="#FDD835"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_image"
+            app:tint="@color/black" />
+
+        <ImageView
+            android:id="@+id/imageAddWebLink"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="#FDD835"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_web"
+            app:tint="@color/black" />
+
         <ImageView
             android:id="@+id/imageSync"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
-            android:background="#F1E683"
-            android:contentDescription="@string/app_name"
+            android:layout_marginStart="15dp"
+            android:background="#FDD835"
             android:onClick="gotosignup"
-            android:scaleType="fitCenter"
+            android:contentDescription="@string/app_name"
             android:src="@drawable/ic_baseline_sync_24"
             app:tint="@color/black" />
 
@@ -100,21 +135,20 @@
             android:id="@+id/imageSettings"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_alignParentEnd="true"
-            android:background="#F1E683"
+            android:layout_marginStart="15dp"
+            android:background="#FDD835"
             android:contentDescription="@string/app_name"
-            android:foregroundGravity="right"
             android:src="@drawable/ic_baseline_settings_24"
             app:tint="@color/black" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageAddNoteMain"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="22dp"
         android:background="@drawable/background_add_button"
         android:contentDescription="@string/app_name"

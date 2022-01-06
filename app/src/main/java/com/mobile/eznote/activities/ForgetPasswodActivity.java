@@ -1,4 +1,4 @@
-package com.mobile.eznote;
+package com.mobile.eznote.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mobile.eznote.R;
 
 public class ForgetPasswodActivity extends AppCompatActivity {
     private EditText mforgotpassword;
