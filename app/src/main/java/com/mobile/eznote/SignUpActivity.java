@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class SignUpActivity extends AppCompatActivity {
     private EditText msignupemail,msignuppassword;
     private RelativeLayout msignup;
-    private TextView mgotologin;
+    private RelativeLayout mgotologin;
     private FirebaseAuth mAuth;
 
     @Override
