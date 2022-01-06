@@ -13,50 +13,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_above="@+id/goto_screen_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="295dp"></RelativeLayout>
+        android:layout_centerInParent="true"></RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        android:layout_alignBottom="@+id/goto_screen_login"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/bg_orange"></View>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="430dp"
-        android:layout_alignBottom="@+id/goto_screen_login"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/bg_blu"></View>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/centernine3"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="200dp"
-        android:orientation="vertical"
-        android:layout_above="@+id/centernine3"
+        android:layout_marginBottom="120dp"
+        android:orientation="vertical">
 
-        >
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="EZ Note"
+            android:textAlignment="center"
+            android:textColor="#C6205B"
+            android:textSize="50dp"
+            android:textStyle="bold"></TextView>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Quên mật khẩu"
             android:textAlignment="center"
-            android:textSize="30dp"
-            android:textColor="#8E3317"
+            android:textColor="@color/black"
+            android:textSize="35dp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>
@@ -69,68 +52,34 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
-        android:hint="Nhập email bạn đã đăng ký">
+        android:hint="Nhập email bạn đã đăng ký từ trước:">
 
     </EditText>
 
-    <RelativeLayout
-
+    <Button
         android:id="@+id/phuchoi_password"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/quenmatkhau"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quenmatkhau"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="30dp"
 
+        android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:background="@drawable/bg_orange">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:text="Nhấn để phục hồi"
-            android:textColor="#8E3317"
-            android:textSize="18dp"
-            android:textStyle="bold">
-
-        </TextView>
-    </RelativeLayout>
-
-
-    <RelativeLayout
-
-        android:id="@+id/goto_screen_login"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/bg_orange">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="8dp"
-            android:text="Đăng nhập lại"
-            android:textColor="#8E3317"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
+        android:background="@color/black"
+        android:text="Phục hồi tài khoản"></Button>
 
     <TextView
-        android:id="@+id/chuthich5"
-        android:layout_width="wrap_content"
+        android:id="@+id/goto_screen_login"
+        android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
         android:layout_below="@+id/phuchoi_password"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
-        android:text="Kiểm tra hòm thư email của bạn"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight="30dp"
+        android:text="Quay lại đăng nhập"
         android:textAlignment="center"
-        android:textColor="#442F06"
-        android:textSize="18dp"></TextView>
+        android:textColor="#393838"></TextView>
+
 </RelativeLayout>
+
