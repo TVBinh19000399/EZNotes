@@ -410,5 +410,14 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         finish();
     }
 
+    public void sysdata(View view) {
+        noteList.clear();
+
+        //day data tu realtimedatabase
+
+
+
+
+    }
 
 }
