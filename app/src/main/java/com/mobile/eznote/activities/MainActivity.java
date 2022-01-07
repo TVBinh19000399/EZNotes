@@ -341,14 +341,12 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     }
 
     public void gotoupload(View view) {
+        if (noteList.size()==0)
+            return;
         mAuth = FirebaseAuth.getInstance();
-        //truoc khi upload phai mo man hinh login, sau khi login se lay duoc mauth
-//        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-//        startActivity(intent);
 
         //lay ra uid cua user
-        String uid = uid = mAuth.getUid();
-
+        String  uid = mAuth.getUid();
 
         for (int i = 0; i < noteList.size(); i++) {
             Note note = noteList.get(i);
