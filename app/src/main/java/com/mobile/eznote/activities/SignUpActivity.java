@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
         msignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mail = msignuppassword.getText().toString().trim();
+                String mail = msignupemail.getText().toString().trim();
                 String password =  msignuppassword.getText().toString().trim();
                 if(mail.isEmpty() || password.isEmpty()){
                     Toast.makeText(getApplicationContext(),"Tất cả đều bắt buộc:",Toast.LENGTH_SHORT).show();

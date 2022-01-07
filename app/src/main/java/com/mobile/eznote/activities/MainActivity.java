@@ -340,6 +340,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     }
 
     public void gotoupload(View view) {
+        mAuth = FirebaseAuth.getInstance();
         //truoc khi upload phai mo man hinh login, sau khi login se lay duoc mauth
         Intent intent = new Intent(MainActivity.this,LoginActivity.class);
         startActivity(intent);
