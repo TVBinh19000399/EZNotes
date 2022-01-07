@@ -135,13 +135,10 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
 
-        findViewById(R.id.imageAddNote).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.imageHelp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivityForResult(
-                        new Intent(getApplicationContext(), CreateNoteActivity.class),
-                        REQUEST_CODE_ADD_NOTE
-                );
+                startActivity(new Intent(MainActivity.this, HelpActivity.class));
             }
         });
 
@@ -399,6 +396,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         }
     }
 
+
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
         sharedPreferences = getSharedPreferences("loginPref", MODE_PRIVATE);
@@ -414,8 +412,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         noteList.clear();
 
         //day data tu realtimedatabase
-
-
 
 
     }

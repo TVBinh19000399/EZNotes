@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobile.eznote">
 
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -14,7 +13,10 @@
         android:roundIcon="@mipmap/ic_app"
         android:supportsRtl="true"
         android:theme="@style/Theme.EZNote">
-
+        <activity
+            android:name=".activities.HelpActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:exported="true" />
         <activity
             android:name=".activities.ForgetPasswodActivity"
             android:exported="true" />
@@ -26,7 +28,7 @@
             android:exported="true" />
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,9 +37,7 @@
         </activity>
         <activity
             android:name=".activities.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

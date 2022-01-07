@@ -92,12 +92,12 @@
 
 
         <ImageView
-            android:id="@+id/imageAddNote"
+            android:id="@+id/imageHelp"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="#FDD835"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_add_outline"
+            android:src="@drawable/ic_help"
             app:tint="@color/black" />
 
         <ImageView
