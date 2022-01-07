@@ -26,8 +26,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private String EMAIL_KEY = "EMAIL_KEY";
     private String PASSWORD_KEY = "EMAIL_KEY";
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
 
     @Override

@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageReference = storage.getReferenceFromUrl("gs://ez-note-ba48e.appspot.com");
 
+    private String EMAIL_KEY = "EMAIL_KEY";
+    private String PASSWORD_KEY = "EMAIL_KEY";
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -336,12 +341,12 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
 
     public void gotoupload(View view) {
-        if (noteList.size()==0)
+        if (noteList.size() == 0)
             return;
 
         root.child("USERS").child(mAuth.getUid()).removeValue();
         //lay ra uid cua user
-        String  uid = mAuth.getUid();
+        String uid = mAuth.getUid();
 
         for (int i = 0; i < noteList.size(); i++) {
             Note note = noteList.get(i);
@@ -391,10 +396,19 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             } catch (Exception e) {
                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
             }
-
-
         }
-
-
     }
+
+    public void logout(View view) {
+        FirebaseAuth.getInstance().signOut();
+        sharedPreferences = getSharedPreferences("loginPref", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString(EMAIL_KEY, "null");
+        editor.putString(PASSWORD_KEY, "null");
+        editor.commit();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        finish();
+    }
+
+
 }
