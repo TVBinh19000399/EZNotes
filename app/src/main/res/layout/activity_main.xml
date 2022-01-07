@@ -132,6 +132,17 @@
             app:tint="@color/black" />
 
         <ImageView
+            android:id="@+id/imageUpload"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="#FDD835"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_upload"
+            android:onClick="gotoupload"
+            app:tint="@color/black" />
+
+        <ImageView
             android:id="@+id/imageSettings"
             android:layout_width="30dp"
             android:layout_height="30dp"

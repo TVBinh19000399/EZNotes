@@ -14,6 +14,9 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -21,6 +24,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,13 +33,24 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.mobile.eznote.R;
 import com.mobile.eznote.adapters.NotesAdapter;
 import com.mobile.eznote.database.NotesDatabase;
 import com.mobile.eznote.entities.Note;
 import com.mobile.eznote.listeners.NotesListener;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NotesListener {
@@ -53,12 +68,24 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private int noteClickedPosition = -1;
 
     private AlertDialog dialogAddURL;
-
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference root;
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private StorageReference storageReference = storage.getReferenceFromUrl("gs://ez-note-ba48e.appspot.com");
+    private String urlimage = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //init firebase database
+        mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance("https://ez-note-ba48e-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        root = mDatabase.getReference();
+
+        //
 
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
@@ -312,5 +339,67 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         startActivity(intent);
     }
 
+    public void gotoupload(View view) {
+        //truoc khi upload phai mo man hinh login, sau khi login se lay duoc mauth
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
 
+        //lay ra uid cua user
+        String uid = uid = mAuth.getUid();
+
+
+        for (int i = 0; i < noteList.size(); i++) {
+            Note note = noteList.get(i);
+            //upload anh truoc
+
+            String pathimage = "imageofnote" + String.valueOf(noteList.size() - i - 1) + ".png";
+            StorageReference imageName = storageReference.child(uid).child(pathimage);
+
+            Bitmap bitmap = BitmapFactory.decodeFile(note.getImagePath());
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            byte[] data = baos.toByteArray();
+
+            UploadTask uploadTask = imageName.putBytes(data);
+            uploadTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    // Handle unsuccessful uploads
+//                    Log.d("binhh", "Upload anh bi that bai!");
+
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String imageUrl = uri.toString();
+                            root.child("USERS").child(mAuth.getUid()).child(String.valueOf(note.getId())).child("urlimage").setValue(imageUrl);
+                        }
+                    });
+
+                }
+            });
+
+
+            try {
+                //upload idnote, title, datetime, noteText, imagePath, color, webLink
+                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("title").setValue(note.getTitle());
+                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("datetime").setValue(note.getDateTime());
+                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("notetext").setValue(note.getNoteText());
+                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("color").setValue(note.getColor());
+                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("weblink").setValue(note.getWebLink());
+                Toast.makeText(this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG);
+            } catch (Exception e) {
+                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+            }
+
+
+        }
+
+
+    }
 }

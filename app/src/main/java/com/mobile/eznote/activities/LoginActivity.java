@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mloginemail, mloginpassword;
     private RelativeLayout mlogin, mgotosignup;
     private TextView mgotoforgotpassword;
-    private FirebaseAuth mAuth;
+    public FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +59,14 @@ public class LoginActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_LONG).show();
+
+                                //sau khi dang nhap thanh cong thi tat man hinh login de test upload
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
                                 String error = task.getException().getMessage();
-                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: "+error, Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this, "Đăng nhập thất bại: " + error, Toast.LENGTH_LONG).show();
                             }
                         }
                     });
