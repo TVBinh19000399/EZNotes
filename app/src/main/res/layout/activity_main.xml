@@ -126,7 +126,6 @@
             android:layout_height="30dp"
             android:layout_marginStart="15dp"
             android:background="#FDD835"
-            android:onClick="gotosignup"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_baseline_sync_24"
             app:tint="@color/black" />

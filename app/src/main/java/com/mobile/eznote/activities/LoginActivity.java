@@ -56,12 +56,14 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+                    finish();
                 }
             });
             mgotoforgotpassword.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startActivity(new Intent(LoginActivity.this, ForgetPasswodActivity.class));
+                    finish();
                 }
             });
             mlogin.setOnClickListener(new View.OnClickListener() {

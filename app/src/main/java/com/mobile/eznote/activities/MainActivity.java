@@ -335,10 +335,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         dialogAddURL.show();
     }
 
-    public void gotosignup(View view) {
-        Intent intent = new Intent(MainActivity.this, SignUpActivity.class);
-        startActivity(intent);
-    }
 
     public void gotoupload(View view) {
         if (noteList.size()==0)
