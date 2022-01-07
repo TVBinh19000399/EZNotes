@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private DatabaseReference root;
     private FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference storageReference = storage.getReferenceFromUrl("gs://ez-note-ba48e.appspot.com");
-    private String urlimage = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -339,8 +338,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     public void gotoupload(View view) {
         if (noteList.size()==0)
             return;
-        mAuth = FirebaseAuth.getInstance();
 
+        root.child("USERS").child(mAuth.getUid()).removeValue();
         //lay ra uid cua user
         String  uid = mAuth.getUid();
 
@@ -388,9 +387,9 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("notetext").setValue(note.getNoteText());
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("color").setValue(note.getColor());
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("weblink").setValue(note.getWebLink());
-                Toast.makeText(this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG);
+                Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
-                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG);
+                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
             }
 
 
