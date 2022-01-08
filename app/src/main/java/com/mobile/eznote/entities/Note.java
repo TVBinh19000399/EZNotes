@@ -87,6 +87,19 @@ public class Note implements Serializable {
         this.webLink = webLink;
     }
 
+    public Note() {
+    }
+
+    public Note(int id, String title, String dateTime, String noteText, String imagePath, String color, String webLink) {
+        this.id = id;
+        this.title = title;
+        this.dateTime = dateTime;
+        this.noteText = noteText;
+        this.imagePath = imagePath;
+        this.color = color;
+        this.webLink = webLink;
+    }
+
     @NonNull
     @Override
     public String toString() {

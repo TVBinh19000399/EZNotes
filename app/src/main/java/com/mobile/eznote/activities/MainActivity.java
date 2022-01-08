@@ -32,14 +32,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -80,18 +84,16 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //init firebase database
+//        test = findViewById(R.id.test);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance("https://ez-note-ba48e-default-rtdb.asia-southeast1.firebasedatabase.app/");
         root = mDatabase.getReference();
-
-        //
-
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
@@ -342,44 +344,47 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             return;
 
         root.child("USERS").child(mAuth.getUid()).removeValue();
+
         //lay ra uid cua user
         String uid = mAuth.getUid();
 
         for (int i = 0; i < noteList.size(); i++) {
             Note note = noteList.get(i);
-            //upload anh truoc
 
-            String pathimage = "imageofnote" + String.valueOf(noteList.size() - i - 1) + ".png";
-            StorageReference imageName = storageReference.child(uid).child(pathimage);
+            if (!note.getImagePath().isEmpty()) {
+                //upload anh truoc
+                String pathimage = "imageofnote" + String.valueOf(noteList.size() - i - 1) + ".png";
+                StorageReference imageName = storageReference.child(uid).child(pathimage);
 
-            Bitmap bitmap = BitmapFactory.decodeFile(note.getImagePath());
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            byte[] data = baos.toByteArray();
+                Bitmap bitmap = BitmapFactory.decodeFile(note.getImagePath());
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+                byte[] data = baos.toByteArray();
 
-            UploadTask uploadTask = imageName.putBytes(data);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle unsuccessful uploads
+                UploadTask uploadTask = imageName.putBytes(data);
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // Handle unsuccessful uploads
 //                    Log.d("binhh", "Upload anh bi that bai!");
 
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
-                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                        @Override
-                        public void onSuccess(Uri uri) {
-                            String imageUrl = uri.toString();
-                            root.child("USERS").child(mAuth.getUid()).child(String.valueOf(note.getId())).child("urlimage").setValue(imageUrl);
-                        }
-                    });
+                        Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                        result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                String imageUrl = uri.toString();
+                                root.child("USERS").child(mAuth.getUid()).child(String.valueOf(note.getId())).child("urlimage").setValue(imageUrl);
+                            }
+                        });
 
-                }
-            });
+                    }
+                });
+            }
 
 
             try {
@@ -388,7 +393,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("datetime").setValue(note.getDateTime());
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("notetext").setValue(note.getNoteText());
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("color").setValue(note.getColor());
-                root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("weblink").setValue(note.getWebLink());
+                if (!note.getWebLink().isEmpty())
+                    root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("weblink").setValue(note.getWebLink());
                 Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG).show();
             } catch (Exception e) {
                 Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
@@ -404,14 +410,53 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         editor.putString(EMAIL_KEY, "null");
         editor.putString(PASSWORD_KEY, "null");
         editor.commit();
+        //        noteList.clear();
+//        notesAdapter.notifyDataSetChanged();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
     }
 
     public void sysdata(View view) {
-        noteList.clear();
 
-        //day data tu realtimedatabase
+        //test ham de lay toan bo anh tu realtimedatabase
+        DatabaseReference databaseReference = root;
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                noteList.clear();
+                Iterable<DataSnapshot> listNoteFromServer = snapshot.child("USERS").child(mAuth.getUid()).getChildren();
+
+                for (DataSnapshot data : listNoteFromServer) {
+                    String id = data.getKey();
+                    String title = data.child("title").getValue(String.class);
+                    String datetime = data.child("datetime").getValue(String.class);
+
+//                    String urlimage = data.child("urlimage").getValue(String.class);
+                    String urlimage = null;
+                    String weblink = data.child("weblink").getValue(String.class);
+
+                    String color = data.child("color").getValue(String.class);
+                    String notetext = data.child("notetext").getValue(String.class);
+
+                    noteList.add(new Note(Integer.parseInt(id), title, datetime, notetext, urlimage, color, weblink));
+//                    Log.d("abcd", "kiem tra id: " + id);
+//                    Log.d("abcd", "kiem tra title: " + title);
+//                    Log.d("abcd", "kiem tra datetime: " + datetime);
+//                    Log.d("abcd", "kiem tra urlimage: " + urlimage);
+//                    Log.d("abcd", "kiem tra weblink: " + weblink);
+//                    Log.d("abcd", "kiem tra color: " + color);
+//                    Log.d("abcd", "kiem tra notetext: " + notetext);
+                }
+
+                notesAdapter.notifyDataSetChanged();
+                Toast.makeText(MainActivity.this, "Đã đồng bộ thành công!", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
     }
