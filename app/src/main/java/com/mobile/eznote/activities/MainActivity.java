@@ -410,8 +410,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         editor.putString(EMAIL_KEY, "null");
         editor.putString(PASSWORD_KEY, "null");
         editor.commit();
-        //        noteList.clear();
-//        notesAdapter.notifyDataSetChanged();
+        noteList.clear();
+        notesAdapter.notifyDataSetChanged();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
         finish();
     }
@@ -458,6 +458,14 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
 
+
+    }
+
+    //toàn bộ dữ liệu của note được up lên server nhưng khi đồng bộ về k lấy đc hình ảnh
+    //sau khi thực hiện đồng bộ toàn bộ notes từ server về máy, đã có thể hiển thị được trên màn hình, nhưng không hiển thị được kèm hình ảnh
+    //dữ liệu hiện tại được lưu lại trong noteList, nhưng chưa lưu trên local (khi thoát ra vào lại sẽ mất)
+    //hàm refresh thực hiện lưu lại toàn bộ notes trong noteList vào lại Room trên local
+    public void refresh(){
 
     }
 
