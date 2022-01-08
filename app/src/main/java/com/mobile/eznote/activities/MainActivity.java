@@ -457,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             }
         });
-
+        refresh();
 
     }
 
