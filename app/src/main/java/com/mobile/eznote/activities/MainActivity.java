@@ -17,7 +17,6 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -32,7 +31,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -55,7 +53,6 @@ import com.mobile.eznote.listeners.NotesListener;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NotesListener {
@@ -83,8 +80,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private String PASSWORD_KEY = "EMAIL_KEY";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -351,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         for (int i = 0; i < noteList.size(); i++) {
             Note note = noteList.get(i);
 
-            if (!note.getImagePath().isEmpty()) {
+            try {
                 //upload anh truoc
                 String pathimage = "imageofnote" + String.valueOf(noteList.size() - i - 1) + ".png";
                 StorageReference imageName = storageReference.child(uid).child(pathimage);
@@ -365,9 +360,6 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 uploadTask.addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-                        // Handle unsuccessful uploads
-//                    Log.d("binhh", "Upload anh bi that bai!");
-
                     }
                 }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -384,8 +376,9 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
                     }
                 });
+            } catch (Exception e) {
+                Log.d("IMAGE_ERROR", "Duong dan anh khong dung hoac khong ton tai");
             }
-
 
             try {
                 //upload idnote, title, datetime, noteText, imagePath, color, webLink
@@ -395,10 +388,11 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("color").setValue(note.getColor());
                 if (!note.getWebLink().isEmpty())
                     root.child("USERS").child(uid).child(String.valueOf(note.getId())).child("weblink").setValue(note.getWebLink());
-                Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG).show();
+
             } catch (Exception e) {
-                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
             }
+            Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -410,6 +404,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         editor.putString(EMAIL_KEY, "null");
         editor.putString(PASSWORD_KEY, "null");
         editor.commit();
+        new DeleteAllNoteTask().execute();
         noteList.clear();
         notesAdapter.notifyDataSetChanged();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
@@ -439,17 +434,11 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                     String notetext = data.child("notetext").getValue(String.class);
 
                     noteList.add(new Note(Integer.parseInt(id), title, datetime, notetext, urlimage, color, weblink));
-//                    Log.d("abcd", "kiem tra id: " + id);
-//                    Log.d("abcd", "kiem tra title: " + title);
-//                    Log.d("abcd", "kiem tra datetime: " + datetime);
-//                    Log.d("abcd", "kiem tra urlimage: " + urlimage);
-//                    Log.d("abcd", "kiem tra weblink: " + weblink);
-//                    Log.d("abcd", "kiem tra color: " + color);
-//                    Log.d("abcd", "kiem tra notetext: " + notetext);
                 }
 
                 notesAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, "Đã đồng bộ thành công!", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Đã đồng bộ thành công!", Toast.LENGTH_SHORT).show();
+                refresh();
             }
 
             @Override
@@ -457,16 +446,50 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             }
         });
-        refresh();
+
 
     }
 
-    //toàn bộ dữ liệu của note được up lên server nhưng khi đồng bộ về k lấy đc hình ảnh
-    //sau khi thực hiện đồng bộ toàn bộ notes từ server về máy, đã có thể hiển thị được trên màn hình, nhưng không hiển thị được kèm hình ảnh
-    //dữ liệu hiện tại được lưu lại trong noteList, nhưng chưa lưu trên local (khi thoát ra vào lại sẽ mất)
-    //hàm refresh thực hiện lưu lại toàn bộ notes trong noteList vào lại Room trên local
-    public void refresh(){
+    public void refresh() {
+        //delete toan bo du lieu da co trong room
+        new DeleteAllNoteTask().execute();
 
+        //save notes
+        new SaveNoteTask().execute();
+
+        notesAdapter.notifyDataSetChanged();
     }
 
+    @SuppressLint("StaticFieldLeak")
+    class DeleteAllNoteTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            NotesDatabase.getDatabase(getApplicationContext()).noteDao()
+                    .deleteAll();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class SaveNoteTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            for (int i = 0; i < noteList.size(); i++)
+                NotesDatabase.getDatabase(getApplicationContext()).noteDao().insertNote(noteList.get(i));
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+    }
 }
