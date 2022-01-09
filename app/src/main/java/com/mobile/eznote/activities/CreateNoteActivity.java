@@ -167,10 +167,10 @@ public class CreateNoteActivity extends Activity {
 
     private void saveNote() {
         if (inputNoteTitle.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Note title can not be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Note title không được rỗng!", Toast.LENGTH_SHORT).show();
             return;
         } else if (inputNoteText.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Note can not be empty!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Note không được rỗng!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -187,7 +187,10 @@ public class CreateNoteActivity extends Activity {
 
         if (alreadyAvailableNote != null) {
             note.setId(alreadyAvailableNote.getId());
-        }
+        }/*cài đặt id của ghi chú mới từ một ghi chú đã có sẵn.
+        vì chúng tôi đã đặt onConflictStrategy để thay thế trong NOTEDAO.
+        Điều này có nghĩa là nếu ID của một ghi chú mới đã có sẵn trong databse
+        thì nó sẽ được thay thế bằng ghi chú mới và ghi chú của chúng tôi sẽ được cập nhật*/
 
         @SuppressLint("StaticFieldLeak")
         class SaveNoteTask extends AsyncTask<Void, Void, Void> {
@@ -246,7 +249,7 @@ public class CreateNoteActivity extends Activity {
         layoutMiscellaneous.findViewById(R.id.viewColor2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#673AB7";
+                selectedNoteColor = "#4CA172";
                 imageViewColor1.setImageResource(0);
                 imageViewColor2.setImageResource(R.drawable.ic_done);
                 imageViewColor3.setImageResource(0);
@@ -258,7 +261,7 @@ public class CreateNoteActivity extends Activity {
         layoutMiscellaneous.findViewById(R.id.viewColor3).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#E91E63";
+                selectedNoteColor = "#208178";
                 imageViewColor1.setImageResource(0);
                 imageViewColor2.setImageResource(0);
                 imageViewColor3.setImageResource(R.drawable.ic_done);
@@ -270,7 +273,7 @@ public class CreateNoteActivity extends Activity {
         layoutMiscellaneous.findViewById(R.id.viewColor4).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#00BCD4";
+                selectedNoteColor = "#F46E9B";
                 imageViewColor1.setImageResource(0);
                 imageViewColor2.setImageResource(0);
                 imageViewColor3.setImageResource(0);
@@ -282,7 +285,7 @@ public class CreateNoteActivity extends Activity {
         layoutMiscellaneous.findViewById(R.id.viewColor5).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedNoteColor = "#FF0000";
+                selectedNoteColor = "#E4326F";
                 imageViewColor1.setImageResource(0);
                 imageViewColor2.setImageResource(0);
                 imageViewColor3.setImageResource(0);
@@ -294,16 +297,16 @@ public class CreateNoteActivity extends Activity {
 
         if (alreadyAvailableNote != null && alreadyAvailableNote.getColor() != null && !alreadyAvailableNote.getColor().trim().isEmpty()) {
             switch (alreadyAvailableNote.getColor()) {
-                case "#673AB7":
+                case "#4CA172":
                     layoutMiscellaneous.findViewById(R.id.viewColor2).performClick();
                     break;
-                case "#E91E63":
+                case "#208178":
                     layoutMiscellaneous.findViewById(R.id.viewColor3).performClick();
                     break;
-                case "#00BCD4":
+                case "#F46E9B":
                     layoutMiscellaneous.findViewById(R.id.viewColor4).performClick();
                     break;
-                case "#FF0000":
+                case "#E4326F":
                     layoutMiscellaneous.findViewById(R.id.viewColor5).performClick();
                     break;
             }
@@ -415,7 +418,7 @@ public class CreateNoteActivity extends Activity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 selectImage();
             } else {
-                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Quyền bị từ chối!", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -484,9 +487,9 @@ public class CreateNoteActivity extends Activity {
                 @Override
                 public void onClick(View v) {
                     if (inputURL.getText().toString().trim().isEmpty()) {
-                        Toast.makeText(CreateNoteActivity.this, "Enter URL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateNoteActivity.this, "Nhập URL", Toast.LENGTH_SHORT).show();
                     } else if (!Patterns.WEB_URL.matcher(inputURL.getText().toString()).matches()) {
-                        Toast.makeText(CreateNoteActivity.this, "Enter valid URL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateNoteActivity.this, "Nhập URL hợp lệ", Toast.LENGTH_SHORT).show();
                     } else {
                         textWebURL.setText(inputURL.getText().toString());
                         layoutWebURL.setVisibility(View.VISIBLE);

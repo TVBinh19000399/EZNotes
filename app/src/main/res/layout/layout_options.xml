@@ -14,10 +14,9 @@
         android:id="@+id/textMiscellaneous"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:fontFamily="@font/medium"
         android:gravity="center"
         android:includeFontPadding="false"
-        android:text="@string/miscellaneous"
+        android:text="@string/options"
         android:textColor="@color/white"
         android:textSize="13sp"/>
 
@@ -138,7 +137,6 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/medium"
             android:includeFontPadding="false"
             android:text="@string/choose_color"
             android:textColor="@color/white"
@@ -167,7 +165,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:fontFamily="@font/medium"
             android:includeFontPadding="false"
             android:text="@string/add_image"
             android:textColor="@color/white"
@@ -197,7 +194,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:fontFamily="@font/medium"
             android:includeFontPadding="false"
             android:text="@string/add_url"
             android:textColor="@color/white"

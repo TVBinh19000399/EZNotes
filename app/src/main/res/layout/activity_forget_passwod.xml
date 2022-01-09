@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_centerInParent="true"></RelativeLayout>
+        android:layout_centerInParent="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:textAlignment="center"
             android:textColor="#2562FA"
             android:textSize="50dp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="35dp"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold"/>
 
     </LinearLayout>
 
@@ -67,7 +67,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:background="@color/black"
-        android:text="Phục hồi tài khoản"></Button>
+        android:text="Phục hồi tài khoản"/>
 
     <TextView
         android:id="@+id/goto_screen_login"
@@ -80,7 +80,7 @@
         android:layout_marginRight="30dp"
         android:text="Quay lại đăng nhập"
         android:textAlignment="center"
-        android:textColor="#393838"></TextView>
+        android:textColor="#393838"/>
 
 </RelativeLayout>
 

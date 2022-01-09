@@ -51,7 +51,6 @@
                 android:id="@+id/textDateTime"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/regular"
                 android:includeFontPadding="false"
                 android:textColor="@color/black"
                 android:textSize="12sp"
@@ -163,7 +162,6 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginBottom="15dp"
                 android:background="@null"
-                android:fontFamily="@font/regular"
                 android:gravity="top"
                 android:hint="@string/type_note_here"
                 android:importantForAutofill="no"
@@ -183,7 +181,7 @@
 
     </ScrollView>
 
-    <include layout="@layout/layout_miscellaneous"/>
+    <include layout="@layout/layout_options"/>
 
     <!--    <RelativeLayout
             android:id="@+id/layoutQuickActions"

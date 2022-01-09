@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 selectImage();
             } else {
-                Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Quyền bị từ chối!", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -248,11 +248,11 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                         notesAdapter.notifyItemChanged(noteClickedPosition);
 
                     }
-                } /*from 105-114, if request code is REQUEST_CODE_UPDATE_NOTE, first we remove note form list,
-                 then we checked whether the note is deleted or not,
-                 if the note is deleted then notifying adapter about item removed,
-                 if the note is not deleted then it must be updated thats why we are adding a newly updated note
-                 to that same position where we removed and notifying adapter about item changed*/
+                } /*from 105-114, nếu request code là REQUEST_CODE_UPDATE_NOTE, đầu tiên chúng tôi xóa danh sách biểu mẫu ghi chú,
+                 sau đó chúng tôi kiểm tra xem ghi chú có bị xóa hay không,
+                 nếu ghi chú bị xóa thì thông báo cho adpater về mục đã bị xóa,
+                 nếu ghi chú không bị xóa thì nó phải được cập nhật đó là lý do tại sao chúng tôi thêm một ghi chú mới cập nhật
+                 đến cùng một vị trí nơi chúng tôi đã xóa và thông báo cho adapter về mặt hàng đã thay đổi*/
             }
         }
         new GetNotesTask().execute();
@@ -310,9 +310,9 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 @Override
                 public void onClick(View v) {
                     if (inputURL.getText().toString().trim().isEmpty()) {
-                        Toast.makeText(MainActivity.this, "Enter URL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Nhập URL", Toast.LENGTH_SHORT).show();
                     } else if (!Patterns.WEB_URL.matcher(inputURL.getText().toString()).matches()) {
-                        Toast.makeText(MainActivity.this, "Enter valid URL", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Nhập URL hợp lệ", Toast.LENGTH_SHORT).show();
                     } else {
                         dialogAddURL.dismiss();
                         Intent intent = new Intent(getApplicationContext(), CreateNoteActivity.class);
@@ -476,6 +476,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
         }
     }
 
+    /*Room ko cho phép hoạt động cơ sở dữ liệu trên Main Thread, vì vậy chúng ta sử dụng AsyncTask để lưu note*/
     @SuppressLint("StaticFieldLeak")
     class SaveNoteTask extends AsyncTask<Void, Void, Void> {
 

@@ -17,4 +17,5 @@
     <string name="cancel_dialog">CANCEL</string>
     <string name="delete_note">Delete note</string>
     <string name="are_you_sure_you_want_to_delete_this_note">You sure you wanna delete this note?</string>
+    <string name="options">Options</string>
 </resources>
