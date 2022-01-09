@@ -30,8 +30,9 @@ public class ForgetPasswodActivity extends AppCompatActivity {
         mgobacktologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ForgetPasswodActivity.this, MainActivity.class);
+                Intent intent = new Intent(ForgetPasswodActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         mpasswordrecoverbutton.setOnClickListener(new View.OnClickListener() {
