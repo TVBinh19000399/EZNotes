@@ -392,8 +392,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             } catch (Exception e) {
 //                Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_LONG).show();
         }
+        Toast.makeText(MainActivity.this, "Đã đồng bộ ghi chú lên server!", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                 }
 
                 notesAdapter.notifyDataSetChanged();
-                Toast.makeText(MainActivity.this, "Đã đồng bộ thành công!", Toast.LENGTH_SHORT).show();
+
                 refresh();
             }
 
@@ -447,7 +447,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
 
-
+        Toast.makeText(MainActivity.this, "Đã đồng bộ thành công!", Toast.LENGTH_SHORT).show();
     }
 
     public void refresh() {
