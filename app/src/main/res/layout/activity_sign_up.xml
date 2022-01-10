@@ -25,9 +25,9 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/vagrb"
             android:text="EZNotes"
             android:textAlignment="center"
+            android:fontFamily="@font/yahoo"
             android:textColor="#2562FA"
             android:textSize="50dp"
             android:textStyle="bold"/>
@@ -82,7 +82,6 @@
     <RelativeLayout
         android:id="@+id/dangky"
         android:layout_width="match_parent"
-
         android:layout_height="40dp"
         android:layout_below="@+id/password"
         android:layout_marginLeft="30dp"

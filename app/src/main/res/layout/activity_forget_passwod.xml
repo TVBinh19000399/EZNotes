@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="EZNotes"
-            android:fontFamily="@font/vagrb"
+            android:fontFamily="@font/yahoo"
             android:textAlignment="center"
             android:textColor="#2562FA"
             android:textSize="50dp"
@@ -67,7 +67,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
         android:background="@color/black"
-        android:text="Phục hồi tài khoản"/>
+        android:text="Phục hồi tài khoản" />
 
     <TextView
         android:id="@+id/goto_screen_login"

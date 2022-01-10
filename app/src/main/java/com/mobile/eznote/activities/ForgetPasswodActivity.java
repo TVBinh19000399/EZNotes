@@ -38,18 +38,9 @@ public class ForgetPasswodActivity extends AppCompatActivity {
         mpasswordrecoverbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mail = mforgotpassword.getText().toString().trim();
-                if (mail.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Nhập mail của bạn trước đã", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    //c ta có 2 mkhau khôi phục email
-                }
-
-
+//                String mail = mforgotpassword.getText().toString().trim();
+                Toast.makeText(getApplicationContext(), "Tính năng này đang được phát triển!", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 }
