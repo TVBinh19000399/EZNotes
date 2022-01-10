@@ -183,47 +183,4 @@
 
     <include layout="@layout/layout_options"/>
 
-    <!--    <RelativeLayout
-            android:id="@+id/layoutQuickActions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#F1E683"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="15dp"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <ImageView
-                android:id="@+id/imageAlarm"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:background="#F1E683"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_access_alarm_24"
-
-                app:tint="@color/black" />
-
-
-            <ImageView
-                android:id="@+id/imageShare"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="16dp"
-                android:layout_toEndOf="@id/imageAlarm"
-                android:background="#F1E683"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_mobile_screen_share_24"
-                app:tint="@color/black" />
-
-            <ImageView
-                android:id="@+id/imageDelete"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_alignParentEnd="true"
-                android:background="#F1E683"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_baseline_delete_24"
-                app:tint="@color/black" />
-        </RelativeLayout>-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

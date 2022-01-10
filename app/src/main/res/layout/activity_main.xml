@@ -168,18 +168,6 @@
             app:layout_constraintTop_toTopOf="@+id/layoutQuickActions"
             app:tint="@color/black" />
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/imageSettings"-->
-        <!--            android:layout_width="30dp"-->
-        <!--            android:layout_height="30dp"-->
-        <!--            android:background="#FDD835"-->
-        <!--            android:contentDescription="@string/app_name"-->
-        <!--            android:src="@drawable/ic_baseline_settings_24"-->
-        <!--            app:layout_constraintEnd_toEndOf="@+id/layoutQuickActions"-->
-        <!--            app:layout_constraintStart_toEndOf="@+id/imageLogout"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/layoutQuickActions"-->
-        <!--            app:tint="@color/black" />-->
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
